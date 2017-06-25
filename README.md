@@ -1,10 +1,10 @@
-# Adidas Account Generator for Custom Domains. 
+# Adidas Account Generator for Custom Domains.
 
 ### Credit to https://github.com/bopped for original script.
 
 ## Info:
 
-- Written for Python 2.7 only.
+- Written for Python 3 only.
 
 - Includes support for US, UK, CA, AU.
 
