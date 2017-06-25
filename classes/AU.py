@@ -4,15 +4,15 @@ from bs4 import BeautifulSoup
 fake = Faker()
 
 #Import Custom Account Check
-from accountCheck import acctCheck
+from classes.accountCheck import acctCheck
 acctCheck = acctCheck()
 
-class AUGEN:	
+class AUGEN:
 
 	def AU(self, x, domain):
 		for i in range(x):
 			fake     = Faker()
-			first    = fake.first_name() 
+			first    = fake.first_name()
 			last     = fake.last_name()
 			number   = random.randint(0, 999)
 			Day      = '%d'   % (random.randint(1, 28))
@@ -39,7 +39,7 @@ class AUGEN:
 			})
 
 			payload = {
-					   'firstName'			: first, 
+					   'firstName'			: first,
 					   'lastName'			: last,
 					   'minAgeCheck'			: 'true',
 					   'day'				: Day,
@@ -60,16 +60,12 @@ class AUGEN:
 					   'consentData2'			: '',
 					   'consentData3'			: '',
 					   'CSRFToken'			: csrftoken
-				 } 
+				 }
 			r = s.post('https://cp.adidas.com/web/eCom/en_AU/accountcreate',data=payload)
 
-			if not acctCheck.AccountCheck(r):
-			    print "Account Exists : Username = {0}, Password = {1}".format(email, password)
-
-			if acctCheck.AccountCheck(r):
-			    print 'Created Account : Username = {0}, Password = {1}'.format(email, password)
-			    with open('accountsUK' + '.txt', 'a') as f:
+			print('Created Account : Username = {0}, Password = {1}'.format(email, password))
+			with open('accountsAU.txt', 'a') as f:
 				f.write(email + ':' + password + '\n')
 				f.close()
-			
+
 			time.sleep(2)

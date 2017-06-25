@@ -12,7 +12,7 @@ def account_successfully_createdCA(response):
             return True
 
 def CA(x, domain):
-    
+
     for i in range(x):
         first = fake.first_name()
         last = fake.last_name()
@@ -56,12 +56,9 @@ def CA(x, domain):
                        'consentData3': '',
                        'CSRFToken': csrftoken
                    })
-        if account_successfully_createdCA(r) == False:
-            print "Username = {0}, Password = {1}, Account EXISTS".format(email, password)
-        if account_successfully_createdCA(r) == True:
-                print "Created Account : Username = {0}, Password = {1}".format(email, password)
-                with open('accountsCA' + '.txt', 'a') as f:
-                    f.write(email + ':' + password + '\n')
-                    f.close()
+        print("Created Account : Username = {0}, Password = {1}".format(email, password))
+        with open('accountsCA.txt', 'a') as f:
+            f.write(email + ':' + password + '\n')
+            f.close()
 
         time.sleep(2)
